@@ -21,7 +21,6 @@ import com.eventoapp.models.Convidado;
 import com.eventoapp.models.Evento;
 import com.eventosapp.repository.ConvidadoRepository;
 import com.eventosapp.repository.EventoRepository;
-import com.eventosapp.repository.ConvidadoRepository;import com.eventosapp.repository.EventoRepository;
 import groovy.transform.builder.InitializerStrategy.SET;
 
 @Controller
