@@ -54,6 +54,13 @@ public class EventoController {
 		mv.addObject("convidado",convidado);
 		return mv;
 	}
+	//SALVANDO UPDATE
+   	@RequestMapping(value = "/atualizarConvidado", method=RequestMethod.POST)
+	public String salvarAtualizacao(Convidado convidado)
+	{
+   		cr.save(convidado);
+   		return"redirect:/eventos";
+	}
    	@RequestMapping(value = "/atualizarEvento", method=RequestMethod.POST)
 	public String salvarAtualizacao(Evento evento)
 	{
