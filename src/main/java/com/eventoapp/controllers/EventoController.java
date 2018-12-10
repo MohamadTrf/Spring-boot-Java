@@ -94,12 +94,20 @@ public class EventoController {
 		mv.addObject("eventos",eventos);
 		return mv;
 		
+		Iterable<Evento> eventos = er.findAllByOrderByNomeDesc(); // fazendo a busca no banco de dados
+		mv.addObject("eventos",eventos); // passando na view esse objeto
+		return mv; 
 	}
 	
 	@RequestMapping("/deletarEvento") 
 	public String deletarEvento(@RequestParam ("codigo") long codigo ){
 		System.out.println(codigo);
 		Evento evento =  er.findByCodigo(codigo);
+		int i;
+		List<Convidado> convidados =  cr.findByCodigoEvento(codigo);
+		for(i=0;i<convidados.size();i++   ) {
+			cr.delete(convidados.get(i));
+	}
 		er.delete(evento);
 		return "redirect:/eventos";
 	}
