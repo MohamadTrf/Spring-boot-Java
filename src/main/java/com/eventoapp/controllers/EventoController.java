@@ -139,9 +139,12 @@ public class EventoController {
 		return "redirect:/{codigo}";
 	}
 	
+	//deletando convidado
 	@RequestMapping("/deletarConvidado") 
 	public String deletarConvidado (String rg ) {
 		Convidado convidado = cr.findByRg(rg);
+	public String deletarConvidado (@RequestParam ("num") long num ) {
+		Convidado convidado = cr.findByNum(num);
 		cr.delete(convidado);
 		Evento evento = convidado.getEvento();
 		long codigoLong = evento.getCodigo();
