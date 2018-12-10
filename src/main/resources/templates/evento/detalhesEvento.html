@@ -50,6 +50,7 @@
  		<div class = "container formConvidado">
  		<form method = "post" th:object="${convidado}">
  		 <h3> Inclua convidados na Lista! </h3>
+ 		
  			Nome:<input type = "text" value ="" name="nomeConvidado" placeholder="Nome do Convidado"/>
  			Rg: <input type = "text" value ="" name="rg" placeholder="Rg do Convidado"/>
 		 	<button  class="btn waves-effect waves-light" type="submit" name="action"> Salvar 
@@ -70,7 +71,8 @@
 	   		<tr th:each="convidado : ${convidados}">
 	   			<td> <span th:text ="${convidado.nomeConvidado}"> </span> </td>
 	   			<td> <span th:text ="${convidado.rg}"> </span> </td>
-	   			<td> <a  class="waves-effect waves-light btn-small"  th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.rg)).build()}"> <i class="material-icons left">delete </i> </a></td>
+	   			<td> <a  class="waves-effect waves-light btn-small"  th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidado.num)).build()}"> <i class="material-icons left">delete </i> </a></td>
+	   			<td> <a  class="waves-effect waves-light btn-small"  th:href="${(#mvc.url('EC#atualizarConvidado').arg(0, convidado.num)).build()}"> <i class="material-icons left">edit </i> </a> </td>
 	   		</tr> 
 	   </tbody>
 		
