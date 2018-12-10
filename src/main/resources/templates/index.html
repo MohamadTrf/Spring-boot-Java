@@ -18,13 +18,17 @@
 
 <body>
 
+
 <header>
   <nav>
 	    <div class="nav-wrapper">
-	      <a href="#" class="brand-logo">Lista de Eventos</a>
+	      <a href="#" class="brand-logo">Micro Serviço Padrão -  Crud</a>
 	      <ul id="nav-mobile" class="right hide-on-med-and-down">
-	        <li><a href="/cadastrarEvento" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Evento></a></li>
+	        <li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Evento</a></li>
 	      </ul>
+	     	  <ul id="nav-mobile" class="left hide-on-med-and-down">
+	            <li> <a href="/logout" class="waves-effect waves-light btn"><i class="material-icons left">keyboard_backspace</i>Logout</a></li>
+	          </ul>
 	    </div>
   </nav>
 </header>
@@ -37,6 +41,7 @@
 		<th> Data </th> 
 		<th> Horario </th>
 		<th> Deletar  </th>
+		<th> Editar  </th>
 		</tr>
 	</thead>
 	<tbody>
@@ -46,6 +51,7 @@
 			<td> <span th:text="${evento.data}">  </span> </td>
 			<td> <span th:text="${evento.horario}">  </span> </td>
 			<td> <a  class="waves-effect waves-light btn-small"  th:href="${(#mvc.url('EC#deletarEvento').arg(0, evento.codigo)).build()}"> <i class="material-icons left">delete </i> </a> </td>
+			<td> <a  class="waves-effect waves-light btn-small"  th:href="${(#mvc.url('EC#atualizarEvento').arg(0, evento.codigo)).build()}"> <i class="material-icons left">edit </i> </a> </td>
 		</tr>
 	</tbody>
 </table>
