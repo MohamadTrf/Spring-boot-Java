@@ -47,6 +47,13 @@ public class EventoController {
 		//return "evento/editarEvento";
 	}
 	
+	@RequestMapping (value="/atualizarConvidado",method=RequestMethod.GET)
+	public ModelAndView atualizarConvidado (@RequestParam ("num") long  num) {
+		Convidado convidado = cr.findByNum(num);
+		ModelAndView mv = new ModelAndView("evento/editarConvidado");
+		mv.addObject("convidado",convidado);
+		return mv;
+	}
    	@RequestMapping(value = "/atualizarEvento", method=RequestMethod.POST)
 	public String salvarAtualizacao(Evento evento)
 	{
