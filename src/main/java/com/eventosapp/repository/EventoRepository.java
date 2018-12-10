@@ -9,8 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.eventoapp.models.Evento;
 
 @Repository
-public interface EventoRepository extends CrudRepository<Evento, String> {
-	Evento findByCodigo(long codigo); // buscando  e exibindo o codigo do Evento
 public interface EventoRepository extends JpaRepository<Evento, String> {
 
 	public Evento findByCodigo(long codigo); // buscando  e exibindo o codigo do Evento
