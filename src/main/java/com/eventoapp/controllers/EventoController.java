@@ -34,7 +34,19 @@ public class EventoController {
 		return "evento/formEvento";
 	}
 	
-	@RequestMapping(value="/cadastrarEvento",method=RequestMethod.POST)
+	// Pesquisa objeto na view para exibir no atualizarEventoPut
+	@RequestMapping(value="/atualizarEvento",method=RequestMethod.GET)
+	public ModelAndView atualizarEvento(@RequestParam("codigo") long codigo) {
+		Evento evento = er.findByCodigo(codigo); // pesquisou o evento pelo codigo
+		
+		// pegando do modelo de dados e jogando na view editar evento
+		ModelAndView mv = new ModelAndView("evento/editarEvento"); //chamando a view
+   		mv.addObject("evento",evento); // mandando objeto pra view editar evento
+		return mv;
+		//return	atualizarEventoPUT(evt);
+		//return "evento/editarEvento";
+	}
+	
 	public String form(@Valid Evento evento,BindingResult result, RedirectAttributes attributes) {
 		if(result.hasErrors()) {
 			attributes.addFlashAttribute("mensagem", "Verifique os campos");
