@@ -47,6 +47,12 @@ public class EventoController {
 		//return "evento/editarEvento";
 	}
 	
+   	@RequestMapping(value = "/atualizarEvento", method=RequestMethod.POST)
+	public String salvarAtualizacao(Evento evento)
+	{
+   		er.save(evento);
+   		return"redirect:/eventos";
+	}
 	public String form(@Valid Evento evento,BindingResult result, RedirectAttributes attributes) {
 		if(result.hasErrors()) {
 			attributes.addFlashAttribute("mensagem", "Verifique os campos");
